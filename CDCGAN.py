@@ -25,8 +25,8 @@ from torchvision.models import inception_v3
 import numpy as np
 from scipy.stats import entropy
 from scipy.linalg import sqrtm
-# device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+# device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
 import os
 os.environ['KMP_DUPLICATE_LIB_OK']='TRUE'
 
@@ -177,8 +177,8 @@ class Discriminator(nn.Module):
         return validity
 
     
-# device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")   
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+# device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")   
 
 
 
@@ -353,8 +353,8 @@ latent_dim = 200
 output_dir = r"./generation"
 
 
-# device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+# device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
 
 # 加载生成器模型
 # generator = Generator(latent_dim, condition_dim=1, img_channels=3, img_size=256).to(device)
