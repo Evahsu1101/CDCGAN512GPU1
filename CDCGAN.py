@@ -74,19 +74,19 @@ transform = transforms.Compose([
 
 
 # 定義路徑
-# root_folder = r"./classification"
-# output_folder = r"./generation_test"
-# output_folder1 = r"./classification_generation/0"
-# output_folder2 = r"./classification_generation/1"
-root_folder = "/Users/xucixin/Desktop/陳漢興學長程式碼/CDCGAN/分類"
-output_folder = "/Users/xucixin/Desktop/陳漢興學長程式碼/CDCGAN/測試生成"
-output_folder1 = "/Users/xucixin/Desktop/陳漢興學長程式碼/CDCGAN/分類生成/0"
-output_folder2 = "/Users/xucixin/Desktop/陳漢興學長程式碼/CDCGAN/分類生成/1"
+root_folder = r"./classification"
+output_folder = r"./generation_test"
+output_folder1 = r"./classification_generation/0"
+output_folder2 = r"./classification_generation/1"
+# root_folder = "/Users/xucixin/Desktop/陳漢興學長程式碼/CDCGAN/分類"
+# output_folder = "/Users/xucixin/Desktop/陳漢興學長程式碼/CDCGAN/測試生成"
+# output_folder1 = "/Users/xucixin/Desktop/陳漢興學長程式碼/CDCGAN/分類生成/0"
+# output_folder2 = "/Users/xucixin/Desktop/陳漢興學長程式碼/CDCGAN/分類生成/1"
 custom_dataset = CustomDataset(root_folder, transform=transform)
 
 # dataloader
 # batch_size = 43
-batch_size = 43
+batch_size = 86
 data_loader = DataLoader(custom_dataset, batch_size=batch_size, shuffle=True)
 
 
