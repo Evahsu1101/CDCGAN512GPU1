@@ -85,7 +85,8 @@ output_folder2 = r"./classification_generation/1"
 custom_dataset = CustomDataset(root_folder, transform=transform)
 
 # dataloader
-batch_size = 43
+# batch_size = 43
+batch_size = 6
 data_loader = DataLoader(custom_dataset, batch_size=batch_size, shuffle=True)
 
 
