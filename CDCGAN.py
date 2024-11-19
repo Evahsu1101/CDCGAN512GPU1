@@ -189,8 +189,8 @@ condition_dim = 1
 img_channels = 3
 # img_size = 256
 img_size = 512
-# device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+# device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
 
 # 創建及初始化生成器及判別器
 generator = Generator(latent_dim, condition_dim, img_channels, img_size).to(device)
