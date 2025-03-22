@@ -68,7 +68,7 @@ class CustomDataset(Dataset):
 # 圖像預處理256*256
 transform = transforms.Compose([
     # transforms.Resize((256, 256)),  
-    transforms.Resize((512, 512)),# 調整畫素為1024x1024
+    transforms.Resize((256, 256)),# 調整畫素為1024x1024
     transforms.ToTensor(), 
 ])
 
@@ -188,7 +188,7 @@ latent_dim = 200
 condition_dim = 1
 img_channels = 3
 # img_size = 256
-img_size = 512
+img_size = 256
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
 
@@ -358,7 +358,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # 加载生成器模型
 # generator = Generator(latent_dim, condition_dim=1, img_channels=3, img_size=256).to(device)
-generator = Generator(latent_dim, condition_dim=1, img_channels=3, img_size=512).to(device)
+generator = Generator(latent_dim, condition_dim=1, img_channels=3, img_size=256).to(device)
 generator.load_state_dict(torch.load(r"./model/CWGAN-GP C T2 generator_epoch_5000.pth", map_location=device))
 
 
