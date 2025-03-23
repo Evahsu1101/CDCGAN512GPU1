@@ -74,7 +74,7 @@ transform = transforms.Compose([
 
 
 # 定義路徑
-root_folder = r"./classfication"
+root_folder = r"./classification"
 output_folder = r"./generation_test"
 output_folder1 = r"./classification_generation/0"
 output_folder2 = r"./classification_generation/1"
@@ -216,7 +216,10 @@ def plot_generator_loss(generator_losses, title):
 
     
     
-model_save_dir= r"./model"
+# 定義保存模型資料夾
+save_folder = r"./model"
+os.makedirs(save_folder, exist_ok=True)  # 确保文件夹存在
+
 # 初始化紀錄的列表
 overall_accuracies = []
 class_0_accuracies = []
@@ -292,21 +295,18 @@ for epoch in range(epochs):
                save_image(fake_images.data[:1], f"{output_folder}/Test5epoch_{epoch}.png", nrow=1, normalize=True)
                
  # 每1000个Epoch保存一次模型
-        if (epoch + 1) % 100 == 0:
-            generator_save_path = os.path.join(model_save_dir, f'CDCGAN T2 generator_epoch_{epoch+1}.pth')
+        if (epoch + 1) % 1000 == 0:
+            generator_save_path = os.path.join(model_save_dir, f'CDCGAN_T2_generator_epoch_{epoch+1}.pth')
 
         
             torch.save(generator.state_dict(), generator_save_path)
             
             print(f"Models saved at epoch {epoch+1}")
-# 定義保存模型資料夾
 
-save_folder = r"./model"
-os.makedirs(save_folder, exist_ok=True)  # 确保文件夹存在
 
 # 定義保存模型路徑
-generator_path = os.path.join(save_folder, 'CDCGAN T2 generator EPOCH10000.pth')
-#discriminator_path = os.path.join(save_folder, 'CWGAN-GP T2 discriminator EPOCH10000.pth')
+generator_path = os.path.join(save_folder, 'CDCGAN_T2_generator_EPOCH10000.pth')
+discriminator_path = os.path.join(save_folder, 'CDCGAN_T2 generator_EPOCH10000.pth')
 
 # 保存模型
 torch.save(generator.state_dict(), generator_path)
@@ -317,12 +317,12 @@ print(f"Generator model saved at {generator_path}")
               
                 
 #訓練結束畫圖      
-plot_generator_loss(generator_losses, 'CDCGAN Training Losses')
+plot_generator_loss(generator_losses, 'CDCGAN_Training_Losses')
 
 
 # 保存模型參數
-torch.save(generator.state_dict(), 'CDCGAN T2 generator EPOCH10000.pth')
-torch.save(discriminator.state_dict(), 'CDCGAN T2 discriminator EPOCH10000.pth')
+torch.save(generator.state_dict(), 'CDCGAN_T2_generator_EPOCH10000.pth')
+torch.save(discriminator.state_dict(), 'CDCGAN_T2_discriminator_EPOCH10000.pth')
 
 
 
@@ -359,7 +359,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # 加载生成器模型
 # generator = Generator(latent_dim, condition_dim=1, img_channels=3, img_size=256).to(device)
 generator = Generator(latent_dim, condition_dim=1, img_channels=3, img_size=256).to(device)
-generator.load_state_dict(torch.load(r"./model/CWGAN-GP C T2 generator_epoch_5000.pth", map_location=device))
+generator.load_state_dict(torch.load(r"./model/CDCGAN_T2_generator_EPOCH10000.pth", map_location=device))
 
 
 generate_and_save_images(generator, category=0, num_images=100, latent_dim=latent_dim, output_dir=output_dir, device=device)
