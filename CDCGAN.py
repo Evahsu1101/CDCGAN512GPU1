@@ -74,7 +74,7 @@ transform = transforms.Compose([
 
 
 # 定義路徑
-root_folder = r"./classification"
+root_folder = r"./classfication"
 output_folder = r"./generation_test"
 output_folder1 = r"./classification_generation/0"
 output_folder2 = r"./classification_generation/1"
