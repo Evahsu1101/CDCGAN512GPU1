@@ -89,7 +89,8 @@ custom_dataset = CustomDataset(root_folder, transform=transform)
 batch_size = 6
 data_loader = DataLoader(custom_dataset, batch_size=batch_size, shuffle=True)
 
-
+model_save_dir = "./model"
+os.makedirs(model_save_dir, exist_ok=True)  # 如果資料夾不存在就自動建立
 
 class Generator(nn.Module):
     def __init__(self, latent_dim, condition_dim, img_channels, img_size):
